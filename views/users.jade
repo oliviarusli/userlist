@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+
+  form(action="/users/#{action}", method="post")
+
+    input(id='userName', type='hidden', value="#{originalData._id||''}", name='_id')
+
+    div
+      label(for='userName') User Name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      input(id='userName', type='text', value="#{originalData.userName||''}", name='userName')
+    div
+      label(for='accountNumber') Account Number &nbsp; 
+      input(id='accountNumber', type='text', value="#{originalData.accountNumber  ||''}", name='accountNumber')
+    div
+      label(for='emailAddress') Email Address &nbsp; &nbsp; &nbsp; 
+      input(id='emailAddress', type='text', value="#{originalData.emailAddress||''}", name='emailAddress')
+    div
+      label(for='identityNumber') Identity Number &nbsp; &nbsp;
+      input(id='identityNumber', type='text', value="#{originalData.identityNumber||''}", name='identityNumber')
+    
+    if action=='add'
+      button(type="submit") Add
+    else
+      button(type="submit") Update
+
+    if successMsg
+      p #{successMsg}

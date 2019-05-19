@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+
+  a(href="../users" ) Add new user
+  
+  p
+  
+  table(border="1")
+    thead
+      tr 
+        th User Name
+        th Account Number
+        th Email Address
+        th Identity Number
+        th Action
+    tbody
+      each user in userList
+        tr
+          td=user.userName
+          td=user.accountNumber
+          td=user.emailAddress
+          td=user.identityNumber
+          td 
+            a(href="/update/#{user._id}") Update
+            &nbsp;&nbsp;
+            a(href="/delete/#{user._id}") Delete
